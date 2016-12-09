@@ -3,8 +3,7 @@
 <head>
 	<meta charset="UTF-8">
 	<title>Document</title>
-	<style>
-		
+	<style>		
 		div{
 			width: 50px;
 			height: 50px;
@@ -12,7 +11,6 @@
 			position: absolute;
 			-border-radius: 50%;
 		}
-
 	</style>
 </head>
 <body>
@@ -76,15 +74,10 @@
 					y:top
 				}
 		}
-	
-
 		var oDiv=document.getElementsByTagName('div'),
-			len=oDiv.length;
-			
+			len=oDiv.length;		
 			document.onmousemove=function(e){
-			pos=getPos(e);
-			//alert(pos.x+","+pos.y)
-			
+			pos=getPos(e);	
 			for(var i=len-1;i>0;i--){
 				var num1=Math.floor(Math.random()*255),
 				num2=Math.floor(Math.random()*255),
@@ -96,9 +89,7 @@
 			oDiv[0].style.left=pos.x-20+"px";
 			oDiv[0].style.top=pos.y-20+"px";
 			console.timeEnd("time");
-			}
-
-			
+			}		
 	</script>
 </body>
 </html>

@@ -1,0 +1,114 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		
+		div{
+			width: 50px;
+			height: 50px;
+			background: #abcdef;
+			position: absolute;
+			border-radius: 50%;
+		}
+	</style>
+</head>
+<body>
+	<div></div>
+	<div></div>
+	<div></div>
+	<div></div>
+	<div></div>
+	<div></div>
+	<div></div>
+	<div></div>
+	<div></div>
+	<div></div>
+	<div></div>
+	<div></div>
+	<div></div>
+	<div></div>
+	<div></div>
+	<div></div>
+	<div></div>
+	<div></div>
+	<div></div>
+	<div></div>
+	<div></div>
+	<div></div>
+	<div></div>
+	<div></div>
+	<div></div>
+	<div></div>
+	<div></div>
+	<div></div>
+	<div></div>
+	<div></div>
+	<div></div>
+	<div></div>
+	<div></div>
+	<div></div>
+	<div></div>
+	<div></div>
+	<div></div>
+	<div></div>
+	<div></div>
+	<div></div>
+	<div></div>
+	<div></div>
+	<div></div>
+	<div></div>
+	<div></div>
+	<div></div>
+	<div></div>
+	<div></div>
+	<div></div>
+	<div></div>
+	<div></div>
+	<div></div>
+	<div></div>
+	<div></div>
+	<div></div>
+	<div></div>
+	<div></div>
+	<div></div>
+	<div></div>
+	<div></div>
+	<div></div>
+	<div></div>
+	<div></div>
+	<div></div>
+	<div></div>
+	<div></div>
+	<div></div>
+	<div></div>
+	<div></div>
+	<div></div>
+	<script>
+		function getPos(e){
+			var left=e.clientX,
+				top=e.clientY;
+				return{
+					x:left,
+					y:top
+				}
+			}
+		var oDiv=document.getElementsByTagName('div'),
+			len=oDiv.length;			
+			document.onmousemove=function(e){
+				pos=getPos(e);	
+				for(var i=len-1;i>0;i--){
+					var num1=Math.floor(Math.random()*255),
+						num2=Math.floor(Math.random()*255),
+						num3=Math.floor(Math.random()*255);	
+					oDiv[i].style.background="rgb("+num1+","+num2+","+num3+")";
+					oDiv[i].style.left=oDiv[i-1].offsetLeft+"px";
+					oDiv[i].style.top=oDiv[i-1].offsetTop+"px";
+				}
+				oDiv[0].style.left=pos.x-10+"px";
+				oDiv[0].style.top=pos.y-10+"px";
+			}		
+	</script>
+</body>
+</html>

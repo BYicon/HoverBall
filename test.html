@@ -2,113 +2,63 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<title>Document</title>
+	<title>abracadabra</title>
 	<style>
-		
 		div{
 			width: 50px;
 			height: 50px;
 			background: #abcdef;
 			position: absolute;
 			border-radius: 50%;
+			opacity: 1;
 		}
 	</style>
 </head>
 <body>
-	<div></div>
-	<div></div>
-	<div></div>
-	<div></div>
-	<div></div>
-	<div></div>
-	<div></div>
-	<div></div>
-	<div></div>
-	<div></div>
-	<div></div>
-	<div></div>
-	<div></div>
-	<div></div>
-	<div></div>
-	<div></div>
-	<div></div>
-	<div></div>
-	<div></div>
-	<div></div>
-	<div></div>
-	<div></div>
-	<div></div>
-	<div></div>
-	<div></div>
-	<div></div>
-	<div></div>
-	<div></div>
-	<div></div>
-	<div></div>
-	<div></div>
-	<div></div>
-	<div></div>
-	<div></div>
-	<div></div>
-	<div></div>
-	<div></div>
-	<div></div>
-	<div></div>
-	<div></div>
-	<div></div>
-	<div></div>
-	<div></div>
-	<div></div>
-	<div></div>
-	<div></div>
-	<div></div>
-	<div></div>
-	<div></div>
-	<div></div>
-	<div></div>
-	<div></div>
-	<div></div>
-	<div></div>
-	<div></div>
-	<div></div>
-	<div></div>
-	<div></div>
-	<div></div>
-	<div></div>
-	<div></div>
-	<div></div>
-	<div></div>
-	<div></div>
-	<div></div>
-	<div></div>
-	<div></div>
-	<div></div>
-	<div></div>
-	<div></div>
 	<script>
-		function getPos(e){
-			var left=e.clientX,
-				top=e.clientY;
-				return{
-					x:left,
-					y:top
+		!function(){
+			var COUNT = 45,
+				allBall;
+
+			createBall(COUNT);	
+			bindEvent();
+
+			function createBall(count){
+				var frag = document.createDocumentFragment();
+				var ball = document.createElement("div");
+				for (var i = count; i>0;i--){
+					frag.appendChild(ball.cloneNode());
+				}
+				document.body.appendChild(frag);
+				allBall=document.getElementsByTagName('div');
+				}
+
+			function bindEvent(){
+				document.addEventListener('mousemove',function(e){
+				for(var i=COUNT-1;i>0;i--){	
+					setStyle(allBall[i], {
+						backgroundColor: randomColor(),
+						left: allBall[i-1].offsetLeft+"px",
+						top: allBall[i-1].offsetTop+"px"
+					})
+				}
+				setStyle(allBall[0], {
+						left: e.clientX-10+"px",
+						top: e.clientY-10+"px"
+					})
+			});
+			}
+			
+			function randomColor(){
+				return "rgb("+Math.floor(Math.random()*256)+","+Math.floor(Math.random()*256)+","+Math.floor(Math.random()*256)+")";
+			}
+
+			function setStyle(ele, styleOpts){
+				for(var attr in styleOpts){
+					ele.style[attr] = styleOpts[attr];
 				}
 			}
-		var oDiv=document.getElementsByTagName('div'),
-			len=oDiv.length;			
-			document.onmousemove=function(e){
-				pos=getPos(e);	
-				for(var i=len-1;i>0;i--){
-					var num1=Math.floor(Math.random()*255),
-						num2=Math.floor(Math.random()*255),
-						num3=Math.floor(Math.random()*255);	
-					oDiv[i].style.background="rgb("+num1+","+num2+","+num3+")";
-					oDiv[i].style.left=oDiv[i-1].offsetLeft+"px";
-					oDiv[i].style.top=oDiv[i-1].offsetTop+"px";
-				}
-				oDiv[0].style.left=pos.x-10+"px";
-				oDiv[0].style.top=pos.y-10+"px";
-			}		
+		}()
 	</script>
 </body>
 </html>

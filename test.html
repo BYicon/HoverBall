@@ -1,10 +1,11 @@
 <!doctype html>
 <html lang="en">
+
 <head>
 	<meta charset="UTF-8">
 	<title>abracadabra</title>
 	<style>
-		div{
+		div {
 			width: 50px;
 			height: 50px;
 			background: #abcdef;
@@ -14,51 +15,51 @@
 		}
 	</style>
 </head>
+
 <body>
 	<script>
-		!function(){
+		! function () {
 			var COUNT = 45,
 				allBall;
-
-			createBall(COUNT);	
+			createBall(COUNT);
 			bindEvent();
-
-			function createBall(count){
+			function createBall(count) {
 				var frag = document.createDocumentFragment();
 				var ball = document.createElement("div");
-				for (var i = count; i>0;i--){
+				for (var i = count; i > 0; i--) {
 					frag.appendChild(ball.cloneNode());
 				}
 				document.body.appendChild(frag);
-				allBall=document.getElementsByTagName('div');
-				}
-
-			function bindEvent(){
-				document.addEventListener('mousemove',function(e){
-				for(var i=COUNT-1;i>0;i--){	
-					setStyle(allBall[i], {
-						backgroundColor: randomColor(),
-						left: allBall[i-1].offsetLeft+"px",
-						top: allBall[i-1].offsetTop+"px"
-					})
-				}
-				setStyle(allBall[0], {
-						left: e.clientX-10+"px",
-						top: e.clientY-10+"px"
-					})
-			});
-			}
-			
-			function randomColor(){
-				return "rgb("+Math.floor(Math.random()*256)+","+Math.floor(Math.random()*256)+","+Math.floor(Math.random()*256)+")";
+				allBall = document.getElementsByTagName('div');
 			}
 
-			function setStyle(ele, styleOpts){
-				for(var attr in styleOpts){
+			function bindEvent() {
+				document.addEventListener('mousemove', function (e) {
+					for (var i = COUNT - 1; i > 0; i--) {
+						setStyle(allBall[i], {
+							backgroundColor: randomColor(),
+							left: allBall[i - 1].offsetLeft + "px",
+							top: allBall[i - 1].offsetTop + "px"
+						})
+					}
+					setStyle(allBall[0], {
+						left: e.clientX - 10 + "px",
+						top: e.clientY - 10 + "px"
+					})
+				});
+			}
+
+			function randomColor() {
+				return "#" + (~~(Math.random() * (1 << 24))).toString(16);
+			}
+
+			function setStyle(ele, styleOpts) {
+				for (var attr in styleOpts) {
 					ele.style[attr] = styleOpts[attr];
 				}
 			}
 		}()
 	</script>
 </body>
+
 </html>

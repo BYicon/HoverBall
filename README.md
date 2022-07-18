@@ -4,4 +4,4 @@ Special effect
 es5
 
 
-preview: https://ioby.cn
+preview: [http://ioby.cn/](http://ioby.cn/#/effect)
